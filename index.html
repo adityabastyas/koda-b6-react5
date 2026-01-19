@@ -91,5 +91,28 @@
     <div>
       <a href="./submission.html">lihat submission</a>
     </div>
+
+    <script>
+      const form = document.querySelector("form");
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const data = {
+          nama: document.getElementById("nama").value,
+          umur: document.getElementById("umur"),
+          jenisKelamin: document.querySelector(
+            'input[name="jenisKelamin"]:checked'
+          )?.value,
+          perokok: document.querySelector("input[name=anda-perokok]:checked")
+            ?.value,
+          gudangGaram: document.getElementById("gudang-garam").checked,
+          luckyStrike: document.getElementById("lucky-strike").checked,
+          marlboro: document.getElementById("marlboro").checked,
+          esse: document.getElementById("esse").checked,
+        };
+
+        window.localStorage.setItem("history", JSON.stringify(data));
+      });
+    </script>
   </body>
 </html>
