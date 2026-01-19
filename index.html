@@ -36,14 +36,18 @@
       </section>
       <section class="section">
         <div>
-          <label class="subtitle" for="umur">Berapa umur anda?</label>
+          <label class="subtitle" for="umur"
+            >Berapa umur anda? <span class="start">*</span></label
+          >
         </div>
         <div>
           <input type="number" id="umur" name="umur" />
         </div>
       </section>
       <section class="section">
-        <label class="subtitle">Apa jenis kelamin anda?</label>
+        <label class="subtitle"
+          >Apa jenis kelamin anda? <span class="start">*</span></label
+        >
         <div>
           <input type="radio" id="laki-laki" name="jenis-kelamin" />
           <label for="laki-laki">Laki-laki</label>
@@ -53,7 +57,9 @@
         </div>
       </section>
       <section class="section">
-        <label class="subtitle">Apakah anda perokok?</label>
+        <label class="subtitle"
+          >Apakah anda perokok? <span class="start">*</span></label
+        >
         <div>
           <input type="radio" id="ya" name="anda-perokok" />
           <label for="ya">Ya</label>
@@ -88,10 +94,6 @@
       </div>
     </form>
 
-    <div>
-      <a href="./submission.html">lihat submission</a>
-    </div>
-
     <script>
       const form = document.querySelector("form");
       form.addEventListener("submit", (e) => {
@@ -99,11 +101,11 @@
 
         const data = {
           nama: document.getElementById("nama").value,
-          umur: document.getElementById("umur"),
+          umur: document.getElementById("umur").value,
           jenisKelamin: document.querySelector(
             'input[name="jenisKelamin"]:checked'
           )?.value,
-          perokok: document.querySelector("input[name=anda-perokok]:checked")
+          perokok: document.querySelector('input[name="anda-perokok"]:checked')
             ?.value,
           gudangGaram: document.getElementById("gudang-garam").checked,
           luckyStrike: document.getElementById("lucky-strike").checked,
@@ -112,6 +114,8 @@
         };
 
         window.localStorage.setItem("history", JSON.stringify(data));
+
+        window.location.href = "./submission.html";
       });
     </script>
   </body>
