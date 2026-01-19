@@ -49,10 +49,20 @@
           >Apa jenis kelamin anda? <span class="start">*</span></label
         >
         <div>
-          <input type="radio" id="laki-laki" name="jenis-kelamin" />
+          <input
+            type="radio"
+            id="laki-laki"
+            name="jenis-kelamin"
+            value="laki-laki"
+          />
           <label for="laki-laki">Laki-laki</label>
 
-          <input type="radio" id="perempuan" name="jenis-kelamin" />
+          <input
+            type="radio"
+            id="perempuan"
+            name="jenis-kelamin"
+            value="perempuan"
+          />
           <label for="perempuan">Perempuan</label>
         </div>
       </section>
@@ -61,10 +71,10 @@
           >Apakah anda perokok? <span class="start">*</span></label
         >
         <div>
-          <input type="radio" id="ya" name="anda-perokok" />
+          <input type="radio" id="ya" value="ya" name="anda-perokok" />
           <label for="ya">Ya</label>
 
-          <input type="radio" id="tidak" name="anda-perokok" />
+          <input type="radio" value="tidak" id="tidak" name="anda-perokok" />
           <label for="tidak">Tidak</label>
         </div>
       </section>
@@ -103,7 +113,7 @@
           nama: document.getElementById("nama").value,
           umur: document.getElementById("umur").value,
           jenisKelamin: document.querySelector(
-            'input[name="jenisKelamin"]:checked'
+            'input[name="jenis-kelamin"]:checked'
           )?.value,
           perokok: document.querySelector('input[name="anda-perokok"]:checked')
             ?.value,
@@ -113,7 +123,10 @@
           esse: document.getElementById("esse").checked,
         };
 
-        window.localStorage.setItem("history", JSON.stringify(data));
+        let histories = JSON.parse(localStorage.getItem("history")) || [];
+        histories.push(data);
+
+        window.localStorage.setItem("history", JSON.stringify(histories));
 
         window.location.href = "./submission.html";
       });
