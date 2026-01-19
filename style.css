@@ -1,0 +1,75 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f0ebf7;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: center;
+  margin: 30px 0;
+  padding: 0 225px;
+
+  gap: 20px;
+}
+
+header,
+.section {
+  background-color: white;
+  padding: 30px 50px;
+  border-radius: 10px;
+  border-top: 5px solid #743f9f;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.section {
+  border: none;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.section .subtitle {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.section input {
+  border: none;
+  border-bottom: 1px solid black;
+  padding: 5px;
+  font-size: 20px;
+  outline: unset;
+}
+.start {
+  color: red;
+}
+
+.contaButton {
+  display: flex;
+  gap: 20px;
+}
+
+button {
+  background-color: #743f9f;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 32px;
+}
