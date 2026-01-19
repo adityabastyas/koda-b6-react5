@@ -73,3 +73,16 @@ button {
   border-radius: 5px;
   font-size: 32px;
 }
+
+thead {
+  background-color: white;
+}
+
+tbody tr:nth-child(2n + 1) {
+  background-color: #7a2fb7;
+}
+
+tbody {
+  text-align: center;
+  font-weight: 550;
+}
