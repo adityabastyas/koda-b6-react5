@@ -1,11 +1,11 @@
 import React from "react";
-import Input from "./components/Input";
+import FormSurvey from "./pages/FormSurvey";
 
 function App() {
   return (
     <>
       <div>
-        <Input />
+        <FormSurvey />
       </div>
     </>
   );

@@ -1,94 +1,106 @@
 import React from "react";
+import Input from "../components/Input";
+import Table from "../components/Table";
 
 function FormSurvey() {
   return (
     <>
-      <form class='form'>
-        <section class='section'>
-          <div>
-            <label class='subtitle' for='nama'>
-              Siapa nama anda? <span class='start'>*</span>
-            </label>
-          </div>
-          <div>
-            <input
-              required
-              placeholder='masukan nama'
-              type='text'
-              id='nama'
-              name='nama'
-            />
-          </div>
-        </section>
-        <section class='section'>
-          <div>
-            <label class='subtitle' for='umur'>
-              Berapa umur anda? <span class='start'>*</span>
-            </label>
-          </div>
-          <div>
-            <input type='number' id='umur' name='umur' />
-          </div>
-        </section>
-        <section class='section'>
-          <label class='subtitle'>
-            Apa jenis kelamin anda? <span class='start'>*</span>
-          </label>
-          <div>
-            <input
-              type='radio'
-              id='laki-laki'
-              name='jenis-kelamin'
-              value='laki-laki'
-            />
-            <label for='laki-laki'>Laki-laki</label>
+      <div className='bg-[#f0ebf7] grid grid-cols-1 justify-center gap-5 my-8 px-[225px]'>
+        <header className='bg-white p-8 rounded-lg border-t-4 border-[#743f9f] flex flex-col gap-4'>
+          <h1>Form Survey Perokok</h1>
+          <p className='text-base'>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Et delectus
+            quo praesentium deserunt placeat tempore ad eum consequuntur. Itaque
+            placeat distinctio aperiam vel maxime iusto voluptates facilis ab
+            iste sunt!
+          </p>
+          <span className='text-red-500'>* required</span>
+        </header>
+        <form className='flex flex-col gap-5'>
+          <Input label='Siapa nama anda?' required />
+          <Input label='Berapa umur anda?' type='number' required />
 
-            <input
-              type='radio'
-              id='perempuan'
-              name='jenis-kelamin'
-              value='perempuan'
-            />
-            <label for='perempuan'>Perempuan</label>
-          </div>
-        </section>
-        <section class='section'>
-          <label class='subtitle'>
-            Apakah anda perokok? <span class='start'>*</span>
-          </label>
-          <div>
-            <input type='radio' id='ya' value='ya' name='anda-perokok' />
-            <label for='ya'>Ya</label>
+          <section className='bg-white p-8 rounded-lg  flex flex-col gap-6'>
+            <label className='text-xl font-semibold'>
+              Apa jenis kelamin anda? <span className='text-red-500'>*</span>
+            </label>
+            <div className='flex gap-5'>
+              <label className='flex items-center gap-2'>
+                <input
+                  type='radio'
+                  id='laki-laki'
+                  name='jenis-kelamin'
+                  value='laki-laki'
+                />
+                Laki-laki
+              </label>
+              <label className='flex items-center gap-2'>
+                <input
+                  type='radio'
+                  id='perempuan'
+                  name='jenis-kelamin'
+                  value='perempuan'
+                />
+                Perempuan
+              </label>
+            </div>
+          </section>
 
-            <input type='radio' value='tidak' id='tidak' name='anda-perokok' />
-            <label for='tidak'>Tidak</label>
+          <section className='bg-white p-8 rounded-lg  flex flex-col gap-6'>
+            <label className='text-xl font-semibold'>
+              Apakah anda perokok? <span className='text-red-500'>*</span>
+            </label>
+            <div className='flex gap-5'>
+              <label className='flex items-center gap-2'>
+                <input type='radio' id='ya' value='ya' name='anda-perokok' />
+                Ya
+              </label>
+              <label className='flex items-center gap-2'>
+                <input
+                  type='radio'
+                  id='tidak'
+                  value='tidak'
+                  name='anda-perokok'
+                />
+                Tidak
+              </label>
+            </div>
+          </section>
+
+          <section className='bg-white p-8 rounded-lg  flex flex-col gap-4'>
+            <label className='text-xl font-semibold'>
+              Jika Anda perokok, rokok apa yang anda pernah coba?
+            </label>
+
+            <label className='flex items-center gap-2'>
+              <input type='checkbox' name='gudang-garam' id='gudang-garam' />
+              Gudang Garam Filter
+            </label>
+            <label className='flex items-center gap-2'>
+              <input type='checkbox' name='lucky-strike' id='lucky-strike' />
+              Lucky Strike
+            </label>
+            <label className='flex items-center gap-2'>
+              <input type='checkbox' name='marlboro' id='marlboro' />
+              Marlboro
+            </label>
+            <label className='flex items-center gap-2'>
+              <input type='checkbox' name='esse' id='esse' />
+              Esse
+            </label>
+          </section>
+
+          <div className='flex gap-5'>
+            <button
+              type='submit'
+              className='bg-[#743f9f] text-white text-2xl px-4 py-1.5 rounded-md cursor-pointer'
+            >
+              Submit
+            </button>
           </div>
-        </section>
-        <section class='section'>
-          <label class='subtitle'>
-            Jika Anda perokok, rokok apa yang anda pernah coba?
-          </label>
-          <div>
-            <input type='checkbox' name='gudang-garam' id='gudang-garam' />
-            <label for='gudang-garam'>Gudang Garam Filter</label>
-          </div>
-          <div>
-            <input type='checkbox' name='lucky-strike' id='lucky-strike' />
-            <label for='lucky-strike'>Lucky Strike</label>
-          </div>
-          <div>
-            <input type='checkbox' name='marlboro' id='marlboro' />
-            <label for='marlboro'>Marlboro</label>
-          </div>
-          <div>
-            <input type='checkbox' name='esse' id='esse' />
-            <label for='esse'>Esse</label>
-          </div>
-        </section>
-        <div class='contaButton'>
-          <button type='submit'>Submit</button>
-        </div>
-      </form>
+        </form>
+      </div>
+      <Table />
     </>
   );
 }
