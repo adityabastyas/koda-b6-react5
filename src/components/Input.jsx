@@ -1,8 +1,7 @@
 import React from "react";
 
 function Input(props) {
-  const { id, label, required, placeholder, type, name, value, onChange } =
-    props;
+  const { id, label, required, placeholder, type, name, register } = props;
   return (
     <>
       <section className='bg-white p-8 rounded-lg flex flex-col gap-8'>
@@ -13,13 +12,12 @@ function Input(props) {
         </div>
         <div>
           <input
+            {...register}
             required={required}
             placeholder={placeholder}
             type={type}
             id={id}
             name={name}
-            value={value}
-            onChange={onChange}
             className='border-0 border-b border-black p-1 text-xl outline-none w-full'
           />
         </div>

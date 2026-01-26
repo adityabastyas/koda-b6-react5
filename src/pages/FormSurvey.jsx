@@ -1,13 +1,20 @@
-import React from "react";
+import { useForm } from "react-hook-form";
 import Input from "../components/Input";
-import Table from "../components/Table";
 
 function FormSurvey() {
+  const { register, handleSubmit } = useForm();
+
+  function onSave(data) {
+    console.log(data);
+    let histories = JSON.parse(localStorage.getItem("history")) || [];
+    histories.push(data);
+    localStorage.setItem("history", JSON.stringify(histories));
+  }
   return (
     <>
       <div className='bg-[#f0ebf7] grid grid-cols-1 justify-center gap-5 my-8 px-[225px]'>
         <header className='bg-white p-8 rounded-lg border-t-4 border-[#743f9f] flex flex-col gap-4'>
-          <h1>Form Survey Perokok</h1>
+          <h1 className='text-4xl'>Form Survey Perokok</h1>
           <p className='text-base'>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Et delectus
             quo praesentium deserunt placeat tempore ad eum consequuntur. Itaque
@@ -16,9 +23,18 @@ function FormSurvey() {
           </p>
           <span className='text-red-500'>* required</span>
         </header>
-        <form className='flex flex-col gap-5'>
-          <Input label='Siapa nama anda?' required />
-          <Input label='Berapa umur anda?' type='number' required />
+        <form onSubmit={handleSubmit(onSave)} className='flex flex-col gap-5'>
+          <section className='bg-white p-8 rounded-lg flex flex-col gap-4'>
+            <label className='text-xl font-bold'>
+              Siapa nama anda? <span className='text-red-500'>*</span>
+            </label>
+            <input
+              type='text'
+              placeholder='Nama'
+              {...register("nama", { required: true })}
+              className='border-0 border-b border-black p-1 text-xl outline-none w-full'
+            />
+          </section>
 
           <section className='bg-white p-8 rounded-lg  flex flex-col gap-6'>
             <label className='text-xl font-semibold'>
@@ -31,6 +47,7 @@ function FormSurvey() {
                   id='laki-laki'
                   name='jenis-kelamin'
                   value='laki-laki'
+                  {...register("jenisKelamin", { required: true })}
                 />
                 Laki-laki
               </label>
@@ -40,6 +57,7 @@ function FormSurvey() {
                   id='perempuan'
                   name='jenis-kelamin'
                   value='perempuan'
+                  {...register("jenisKelamin", { required: true })}
                 />
                 Perempuan
               </label>
@@ -52,7 +70,13 @@ function FormSurvey() {
             </label>
             <div className='flex gap-5'>
               <label className='flex items-center gap-2'>
-                <input type='radio' id='ya' value='ya' name='anda-perokok' />
+                <input
+                  type='radio'
+                  id='ya'
+                  value='ya'
+                  name='anda-perokok'
+                  {...register("perokok", { required: true })}
+                />
                 Ya
               </label>
               <label className='flex items-center gap-2'>
@@ -61,6 +85,7 @@ function FormSurvey() {
                   id='tidak'
                   value='tidak'
                   name='anda-perokok'
+                  {...register("perokok", { required: true })}
                 />
                 Tidak
               </label>
@@ -73,19 +98,39 @@ function FormSurvey() {
             </label>
 
             <label className='flex items-center gap-2'>
-              <input type='checkbox' name='gudang-garam' id='gudang-garam' />
+              <input
+                type='checkbox'
+                name='gudang-garam'
+                id='gudang-garam'
+                {...register("gudangGaram")}
+              />
               Gudang Garam Filter
             </label>
             <label className='flex items-center gap-2'>
-              <input type='checkbox' name='lucky-strike' id='lucky-strike' />
+              <input
+                type='checkbox'
+                name='lucky-strike'
+                id='lucky-strike'
+                {...register("luckyStrike")}
+              />
               Lucky Strike
             </label>
             <label className='flex items-center gap-2'>
-              <input type='checkbox' name='marlboro' id='marlboro' />
+              <input
+                type='checkbox'
+                name='marlboro'
+                id='marlboro'
+                {...register("marlboro")}
+              />
               Marlboro
             </label>
             <label className='flex items-center gap-2'>
-              <input type='checkbox' name='esse' id='esse' />
+              <input
+                type='checkbox'
+                name='esse'
+                id='esse'
+                {...register("esse")}
+              />
               Esse
             </label>
           </section>
@@ -100,7 +145,6 @@ function FormSurvey() {
           </div>
         </form>
       </div>
-      <Table />
     </>
   );
 }
