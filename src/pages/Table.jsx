@@ -2,6 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function Table() {
+  const [histories, setHistories] = React.useState([]);
+
+  React.useEffect(() => {
+    const data = JSON.parse(localStorage.getItem("history")) || [];
+    setHistories(data);
+  }, []);
   return (
     <>
       <div className='bg-[#f0ebf7] grid grid-cols-1 justify-center gap-5 my-8 px-[225px]'>
@@ -40,7 +46,19 @@ function Table() {
             </tr>
           </thead>
 
-          <tbody className='text-center font-semibold'></tbody>
+          <tbody className='text-center font-semibold'>
+            {histories.map((item, index) => (
+              <tr key={index}>
+                <td className='p-3 border'>{item.nama}</td>
+                <td className='p-3 border'>{item.jenisKelamin}</td>
+                <td className='p-3 border'>{item.perokok}</td>
+                <td className='p-3 border'>{item.gudangGaram ? "v" : "-"}</td>
+                <td className='p-3 border'>{item.luckyStrike ? "v" : "-"}</td>
+                <td className='p-3 border'>{item.marlboro ? "v" : "-"}</td>
+                <td className='p-3 border'>{item.esse ? "v" : "-"}</td>
+              </tr>
+            ))}
+          </tbody>
         </table>
 
         <div>
