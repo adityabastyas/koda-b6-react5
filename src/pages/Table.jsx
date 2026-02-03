@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Table() {
   return (
@@ -43,9 +44,9 @@ function Table() {
         </table>
 
         <div>
-          <a href='./index.html' className='text-blue-600 underline'>
-            kembali ke form
-          </a>
+          <span className='text-blue-600 underline'>
+            <Link to='/'>kembali ke form</Link>
+          </span>
         </div>
       </div>
     </>
