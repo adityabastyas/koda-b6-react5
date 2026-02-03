@@ -27,14 +27,14 @@ function FormSurvey() {
         </header>
         <form onSubmit={handleSubmit(onSave)} className='flex flex-col gap-5'>
           <section className='bg-white p-8 rounded-lg flex flex-col gap-4'>
-            <label className='text-xl font-bold'>
-              Siapa nama anda? <span className='text-red-500'>*</span>
-            </label>
-            <input
-              type='text'
+            <Input
+              id='nama'
+              label='Siapa nama anda?'
+              required={true}
               placeholder='Nama'
-              {...register("nama", { required: true })}
-              className='border-0 border-b border-black p-1 text-xl outline-none w-full'
+              type='text'
+              name='nama'
+              register={register("nama")}
             />
           </section>
 
