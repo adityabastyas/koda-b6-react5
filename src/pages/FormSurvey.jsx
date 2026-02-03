@@ -10,7 +10,9 @@ const validation = yup.object({
 });
 
 function FormSurvey() {
-  const { register, handleSubmit, formState } = useForm();
+  const { register, handleSubmit, formState } = useForm({
+    resolver: yupResolver(validation),
+  });
 
   function onSave(data) {
     console.log(data);
@@ -36,12 +38,12 @@ function FormSurvey() {
             <Input
               id='nama'
               label='Siapa nama anda?'
-              required={true}
+              // required={true}
               placeholder='Nama'
               type='text'
               name='nama'
               register={register("nama")}
-              error={formState.errors.nama.message}
+              error={formState.errors.nama?.message}
             />
           </section>
 
