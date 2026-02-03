@@ -8,6 +8,10 @@ const validation = yup.object({
   nama: yup.string().required("Nama Wjib di isi"),
   jenisKelamin: yup.string().required("Jenis Kelamin Wajib di isi"),
   perokok: yup.string().required("wajib di isi "),
+  umur: yup
+    .number()
+    .typeError("Umur harus berupa angka")
+    .required("Umur Wajib di isi"),
 });
 
 function FormSurvey() {
@@ -49,6 +53,17 @@ function FormSurvey() {
               name='nama'
               register={register("nama")}
               error={formState.errors.nama?.message}
+            />
+          </section>
+          <section className='bg-white p-8 rounded-lg flex flex-col gap-4'>
+            <Input
+              id='umur'
+              label='Berapa umur anda?'
+              placeholder='Umur'
+              type='number'
+              name='umur'
+              register={register("umur")}
+              error={formState.errors.umur?.message}
             />
           </section>
 

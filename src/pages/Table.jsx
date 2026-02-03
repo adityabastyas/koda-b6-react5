@@ -50,6 +50,7 @@ function Table() {
             {histories.map((item, index) => (
               <tr key={index}>
                 <td className='p-3 border'>{item.nama}</td>
+                <td className='p-3 border'>{item.umur}</td>
                 <td className='p-3 border'>{item.jenisKelamin}</td>
                 <td className='p-3 border'>{item.perokok}</td>
                 <td className='p-3 border'>{item.gudangGaram ? "v" : "-"}</td>
