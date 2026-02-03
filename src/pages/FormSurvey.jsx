@@ -1,5 +1,7 @@
 import { useForm } from "react-hook-form";
 import Input from "../components/Input";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
 function FormSurvey() {
   const { register, handleSubmit } = useForm();

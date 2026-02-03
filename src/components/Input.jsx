@@ -1,7 +1,8 @@
 import React from "react";
 
 function Input(props) {
-  const { id, label, required, placeholder, type, name, register } = props;
+  const { id, label, required, placeholder, type, name, register, error } =
+    props;
   return (
     <>
       <section className='bg-white p-8 rounded-lg flex flex-col gap-8'>
@@ -20,6 +21,7 @@ function Input(props) {
             name={name}
             className='border-0 border-b border-black p-1 text-xl outline-none w-full'
           />
+          {error && <span className='text-red-700'>{error}</span>}
         </div>
       </section>
     </>
