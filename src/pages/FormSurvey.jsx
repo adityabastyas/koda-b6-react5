@@ -3,8 +3,14 @@ import Input from "../components/Input";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
+const validation = yup.object({
+  nama: yup.string().required("Nama Wjib di isi"),
+  jenisKelamin: yup.string().required("Jenis Kelamin Wajib di isi"),
+  perokok: yup.string().required("wajib di isi "),
+});
+
 function FormSurvey() {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, formState } = useForm();
 
   function onSave(data) {
     console.log(data);
@@ -35,6 +41,7 @@ function FormSurvey() {
               type='text'
               name='nama'
               register={register("nama")}
+              error={formState.errors.nama.message}
             />
           </section>
 
@@ -64,6 +71,11 @@ function FormSurvey() {
                 Perempuan
               </label>
             </div>
+            {formState.errors.jenisKelamin && (
+              <span className='text-red-700'>
+                {formState.errors.jenisKelamin.message}
+              </span>
+            )}
           </section>
 
           <section className='bg-white p-8 rounded-lg  flex flex-col gap-6'>
@@ -92,6 +104,11 @@ function FormSurvey() {
                 Tidak
               </label>
             </div>
+            {formState.errors.perokok && (
+              <span className='text-red-700'>
+                {formState.errors.perokok.message}
+              </span>
+            )}
           </section>
 
           <section className='bg-white p-8 rounded-lg  flex flex-col gap-4'>
