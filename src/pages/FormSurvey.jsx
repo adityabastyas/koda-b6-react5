@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import Input from "../components/Input";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { useNavigate } from "react-router-dom";
 
 const validation = yup.object({
   nama: yup.string().required("Nama Wjib di isi"),
@@ -14,11 +15,15 @@ function FormSurvey() {
     resolver: yupResolver(validation),
   });
 
+  const navigate = useNavigate();
+
   function onSave(data) {
     console.log(data);
     let histories = JSON.parse(localStorage.getItem("history")) || [];
     histories.push(data);
     localStorage.setItem("history", JSON.stringify(histories));
+
+    navigate("/table");
   }
   return (
     <>
